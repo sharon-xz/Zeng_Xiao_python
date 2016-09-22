@@ -23,7 +23,7 @@ def is_palindrome(word) :
     Boolean  
     """  
     
-    palindrome = False #Setting the default situation
+    palindrome = False #Sets the default situation
     if reverse(word) == word: #If the reverse of the word is the same as the word, it should be a palindrome
         palindrome = True
     
@@ -44,7 +44,7 @@ def reverse(line):
     revStr = '' #Initiation of a new string
     
     for i in range(0,len(line)):
-        revStr += line[len(line)-1-i] #Adding elements from last to the first to the new string
+        revStr += line[len(line)-1-i] #Adds elements from last to the first to the new string
  
     return revStr  #Returns the reversed string
 
@@ -59,15 +59,15 @@ def palindrome_recogniser(filename):
     Returns:
     None
     """  
-    text = open(filename)  #Open a file
+    text = open(filename)  #Opens a file
     content = text.readlines()  #Reads the file line by line
     
     for i in range(0,len(content)): 
         word = content[i] #Gets the content of every line
-        word=re.sub('\\n','',word)  #Getting rid of the '\n' sign at the end of each line.
+        word=re.sub('\\n','',word)  #Gets rid of the '\n' sign at the end of each line.
         
-        if is_palindrome(word) == True:  #Check if the line is palindrome or not
-            print(word)   #If it is palindrome, then it needs to be printed.
+        if is_palindrome(word) == True:  #Checks if the line is a palindrome or not
+            print(word)   #If it is a palindrome, then it needs to be printed.
     text.close
 
     return None
@@ -96,18 +96,18 @@ def semordnilap_recogniser(filename):
    
     i = 0 #Initiation
     j = 0
-    text = open(filename) #Opening file 
-    content = text.readlines()  #Reading lines
+    text = open(filename) #Opens file 
+    content = text.readlines()  #Reads lines
     
     for i in range(0,len(content)):
         
-        word = content[i]    #Getting each line
-        word=re.sub('\\n','',word) #Getting rid of the '\n' sign at the end of each line.
+        word = content[i]    #Gets each line
+        word=re.sub('\\n','',word) #Gets rid of the '\n' sign at the end of each line.
    
         for j in range(0,len(content)): 
           if j > i:   #Only compares the words after, so there won't be repetitive pairs
             otherword = re.sub('\\n','',content[j])  
-            rev_otherword = reverse(otherword)   #Getting the reverse of other words in the file
+            rev_otherword = reverse(otherword)   #Gets the reverse of the other words in the file
         
             if word == rev_otherword:
                print(word, ' ', otherword)  #If they are semordnilap, then prints the result.
@@ -117,6 +117,7 @@ def semordnilap_recogniser(filename):
     return None
 
 #Question 3
+
 def char_freq_table(filename):
     """
     This function reads a file and builds a frequency listing of the characters contained in the file.
@@ -138,7 +139,7 @@ def char_freq_table(filename):
     
     for lines in content:    
         lines=re.sub('\\n','',lines)   #Gets rid of the end of line sign
-        for char in lines:   #counts every character
+        for char in lines:   #Counts every character
             if char in freq:  #if the character already existed in the dictionary, then add one count       
                  freq[char] += 1
             else:
@@ -148,6 +149,7 @@ def char_freq_table(filename):
     
     
 #Question 4
+    
 import os  #Imports the text-to-speech liabrary
 import time   #Imports the time liabrary
 def speak_ICAO(text,pause_characters, pause_words):  
@@ -256,7 +258,7 @@ def numbered(filename, newfilename):
         newline = str(index) + '. ' + i +'\n' #Adds the number of lines before the original line
         newcontent += newline #Adds the new line to the output content
     
-    new = open(newfilename,'w+') #Open a writing new file.
+    new = open(newfilename,'w+') #Opens a writing new file.
     new.write(newcontent) #Writes the content to the new file
             
     return None
@@ -265,7 +267,8 @@ def numbered(filename, newfilename):
 
 def average_length(filename):
     """
-    This function reads a file and gives the average length of words in the file
+    This function reads a file and gives the average length of words in the file.
+    
     Parameters:
     A string of filename
   
@@ -294,9 +297,9 @@ def average_length(filename):
             
     return avg  
 
+
+
 #Question 8
-
-
 
 def guess_game():
     """
@@ -337,7 +340,7 @@ def guess_game():
 def lingo_game(correct_word):
     """
     This function simulates a lingo game of a five-letter word. The user will be asked to guess this
-    word. Based on the input of users, some clues will be given to the users. 
+    word. Based on the input of users, some clues will be given. 
     If the character is fully correct, then the character will be shown around [].
     If the character is correct, but position is not, then the character will be shown around ().
     The game continues until all the characters are in square brackets.
@@ -405,7 +408,7 @@ def splitter(filename):
     title=['Mr','Mrs','Dr'] #A list of titles
     punctuation="`~!@#$%^&*()_-=+[]{}\|;:,<.>/?" #A list of other punctuations
     
-    f = open(filename) #Open files and reads text
+    f = open(filename) #Opens files and reads text
     string = f.read()
    
     for i in range(1,len(string)-2):
