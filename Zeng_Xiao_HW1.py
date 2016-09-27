@@ -9,7 +9,10 @@ Homework 1
 """
 
 #Question 1
+
+##Prof G - The assignment required the function to accept a list of strings
 def translate(text):
+##Prof G - Good header doc!
   """
   This function translates The words "merry" "christmas" "and" "happy" "new" "year" to Swedish.
   The input string is first splitted into separate words, and then translated one by one. The translated words are added to the new string.
@@ -72,7 +75,7 @@ def char_freq(string):
 
 
 #Question 3
-def encoderdecoder(code):
+def rot13cipher(code):
     
     """
     This function takes a string and gives an encoded or decoded string, which is encrypted by the ROT-13 method.
@@ -126,7 +129,7 @@ def correct(string):
     Returns:
     A corrected string
     """  
-    
+    ##Prof G - Ooops. Doesn't handle a period followed by multiple spaces.
     string=re.sub('\ +',' ',string) #replaces one or more spaces between two words to one space
     string=re.sub('\.','. ',string) #replaces period ended with no space to period ended with one space
     return(string)
@@ -147,6 +150,7 @@ def make_3sg_form(word):
     """  
     newword = ''   #Initiation of a new string
     
+    ##Prof G - Nice work but needs to handle mixed case.
     if word.endswith('y') == True :   #If the word ends in y, remove the last character of the word and add ies. 
             newword= word[:-1] + 'ies'
     
@@ -183,6 +187,7 @@ def make_ing_form(word):
     A string of present form of the word
     """  
     
+    ##Prof G - Needs to handle mixed case.
     newword = '' #Initiation of a new string
     consonant = 'bcdfghjklmnpqrstvxz'    #list all the consonant letters
     vowel ='aeiou'   #list all the vowel letters
@@ -330,14 +335,15 @@ def translate2(list1):
     Returns:
     A list of translated Swedish words  
     """  
+    ##Prof G - Need to handle mixed case!
     dictionary={"merry":"god","christmas":"jul","and":"och","happy":"gott","new":"nytt","year":"år"}  #The dictionary of English to Swedish words
     
     return list(map(dictionary.get,list1)) #.get method gives the corresponding value of the key. The map function applies this to every item in the list
 
 
 #Question 12
-
-def map(function,list1):
+##Prof G - Need to rename to avoid ambiguity with the built-in function
+def mymap(function,list1):
     """
     This function implements the higher order function map(). 
     It takes a function and a list, and applies the function to every item in the list and returns the modified list.
@@ -356,7 +362,7 @@ def map(function,list1):
     
 
     
-def filter(function,list1):
+def myfilter(function,list1):
     """
     This function implements the higher order function filter(). 
     It takes a function and a list, and keeps the items that satisfy the function conditions.
@@ -377,7 +383,7 @@ def filter(function,list1):
     
 
     
-def reduce(function,list1):
+def myreduce(function,list1):
     """
     This function implements the higher order function reduce(). 
     It takes a function and a list, and it applies the function to the first two items, and then applies the function to the previously returned result and the next item, until the end of the list.
@@ -405,19 +411,19 @@ def reduce(function,list1):
 #Testing Section
 
 print('Question 1 test 1:\n', translate('happy christmas and happy new year'),'\n')
-print('Question 1 test 2:\n',translate('happy new year'),'\n')
+print('Question 1 test 2:\n',translate('happy NEW year'),'\n')
 
 print('Question 2 test 1:\n',char_freq('abbabcbdbabdbdbabababcbcbab'),'\n')
 print('Question 2 test 2:\n',char_freq('hiduhweuhhhuewyrutgggqoooooiuu'),'\n')
 
 print('Question 3 test 1:\n',encoderdecoder('Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'),'\n')
 
-print('Question 4 test 1:\n',correct("This  is very funny    and cool.Indeed!"),'\n')
+print('Question 4 test 1:\n',correct("This.    is very funny    and cool.Indeed!"),'\n')
 
 print('Question 5 test 1:\n',make_3sg_form('fly') ,'\n')
 print('Question 5 test 2:\n',make_3sg_form('run') ,'\n')
 print('Question 5 test 3:\n',make_3sg_form('brush') ,'\n')
-print('Question 5 test 4:\n',make_3sg_form('fix') ,'\n')
+print('Question 5 test 4:\n',make_3sg_form('FIX') ,'\n')
 
 print('Question 6 test 1:\n',make_ing_form('be') ,'\n')
 print('Question 6 test 2:\n',make_ing_form('see') ,'\n')
@@ -437,7 +443,7 @@ print('Question 10 test 1:\n',filter_long_words(['Today','is','a', 'good', 'day'
 
 print('Question 11 test 1:\n',translate2(['merry','christmas','and','happy','new','year']) ,'\n')
 
-print('Question 12 test 1:\n',map(lambda x: x**2,[1,2,3,4,5]),'\n')
-print('Question 12 test 2:\n',filter(lambda x:x>4,[1,2,3,4,5,6]) ,'\n')
-print('Question 12 test 3:\n', reduce(max,[1,2,3,4,5,6]) ,'\n')
+print('Question 12 test 1:\n',mymap(lambda x: x**2,[1,2,3,4,5]),'\n')
+print('Question 12 test 2:\n',myfilter(lambda x:x>4,[1,2,3,4,5,6]) ,'\n')
+print('Question 12 test 3:\n', myreduce(max,[1,2,3,4,5,6]) ,'\n')
 
