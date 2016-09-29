@@ -33,9 +33,12 @@ def print_plot(binsizes):
    Returns: None, but the function will print several graphs.
        
    """
-   for sizes in binsizes: #For every bin size, prints the graphs for eachnumeric columns
-       plt.figure(); #Drawing graphs
-       df.hist(bins=sizes)  #This method automatically prints the histograms for numeric columns
+   cnames=['Sepal Length','Sepal Width', 'Petal Length','Petal Width']
+   for c in cnames:
+       for sizes in binsizes: #For every bin size, prints the graphs for each numeric columns
+     
+          plt.figure(); #Drawing graphs
+          df.hist(column = c, bins=sizes)  #This method automatically prints the histograms for numeric columns
 
    
    return None
