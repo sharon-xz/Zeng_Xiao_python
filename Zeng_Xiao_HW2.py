@@ -10,6 +10,10 @@ import re
 from random import randint
  
 #Question 1
+ 
+##Prof G - I like the way you absrtated the problem but there are a couple of
+##Prof G - things you missed, mixed case, blank spaces, and puntuation.
+##Prof G - Try this one... A man, a plan, a canal, Panama
 
 def is_palindrome(word) :
     """
@@ -82,6 +86,8 @@ print('Testing Question 1: ',is_palindrome('12321'))
 
 
 #Question 2
+
+##Prof G - Nice. Again, mixed case led to one test case failure
 def semordnilap_recogniser(filename):
     """
     This function reads a file, and prints all pairs of words that are semordnilaps.
@@ -149,6 +155,9 @@ def char_freq_table(filename):
     
     
 #Question 4
+    
+##Prof G - Ooops doesn't handle mixed case and numbers. Also, no sound on my
+##Prof G - mac. Requires a space of say like this "say "
     
 import os  #Imports the text-to-speech liabrary
 import time   #Imports the time liabrary
@@ -234,7 +243,8 @@ def hapax(filename):
         
 #Question 6
     
-    
+##Prof G - Great!! One of the few that allowed the output file to be a 
+##Prof G - parameter to the function.
 def numbered(filename, newfilename):
     """
     This function reads a file and creates a new text file in which all the lines
@@ -291,7 +301,12 @@ def average_length(filename):
            if word != '' : #We only calculate length for non-empty words
               total_length += len(word) #Adds the length of each word
               wordcount += 1  #Adds one count of word
-              
+       
+       ##Prof G - Indentation is wrong for the next line so it gets included
+       ##Prof G - in the for lines in contect loop. The first line of my test
+       ##Prof G - file is blank so this produces a divide by zero error. Works
+       ##Prof G - perfectly if you change the indent to group it with the
+       ##Prof G - return statement below.
        avg = total_length / wordcount  #Calculates the average length
 
             
@@ -325,6 +340,9 @@ def guess_game():
             times += 1
             print('Too high') #Gives hints of values that are too high
             guess = int(input( "Take a guess.\n" ))
+        ##Prof G - This message will never be displayed because the check for
+        ##Prof G - the correct number is in the while loop expression. Move this
+        ##Prof G - outside of the loop and it works well.
         if guess  == correct_answer:
             print("Good job. ", name, ", You guessed my number in", times, "guesses!" )#Correct answer, prints how many times the user has guessed
         if guess  < correct_answer:
@@ -337,6 +355,8 @@ def guess_game():
 
 
 #Question 10
+
+##Prof G - Nice but doesn't work on words with repeated characters. Try "catch"
 def lingo_game(correct_word):
     """
     This function simulates a lingo game of a five-letter word. The user will be asked to guess this
@@ -429,7 +449,9 @@ def splitter(filename):
             string=string[:i+1]+'\n'+string[i+2:] #For sentences end with '?' and '!', there's usually a new sentence as well.
  
     
-    
+    ##Prof G - Should not overwrite a file without warning the user. Better to 
+    ##Prof G - allow them to specify an output file as a parameter as you did in
+    ##Prof G - the numbering problem.
     file1=open(filename,'w') #Opens the file again
     file1.write(string)#Writes the new string to the file
     file1.close()
