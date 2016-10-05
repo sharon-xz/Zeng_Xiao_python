@@ -5,6 +5,8 @@ Homework 3
 @author: Xiao Zeng
 """
 
+##Prof G - Nice work.
+
 import pandas as pd              #Used to generate dataframes
 import matplotlib.pyplot as plt  #Used to draw graphs
 
