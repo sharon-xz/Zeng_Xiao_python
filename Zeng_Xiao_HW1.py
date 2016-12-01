@@ -8,10 +8,53 @@ Homework 1
 
 """
 
-#Question 1
+#Question 1 - Correction
+##The corrected version changed the type of input variables. 
+##Now the input parameter is a list of words instead of a string
+
+def translate(textlist):
+
+  """
+  This function translates The words "merry" "christmas" "and" "happy" "new" "year" to Swedish.
+  The input list is first splitted into separate words, and then translated one by one. The translated words are added to the new string.
+  
+  Parameters:
+  A list of words
+  
+  Returns:
+  A string of translated Swedish words  
+  """  
+  
+  swedish = '' #Initiation of a new string
+  for i in textlist:  #translates every word in the list, and add the translated word to a new string
+      
+      if i =='merry':  
+         swedish += 'god' +' '   #translates merry, use space to separate words
+ 
+      if i =='christmas':
+         swedish += 'jul'+' '    #translates chiristmas
+
+      if i=='and':
+         swedish += 'och'+' '    #translates and
+     
+      if i =='happy':
+         swedish +='gott'+' '    #translates happy
+         
+      if i =='new':
+         swedish +='nytt'+' '    #translates new
+         
+      if i =='year':
+         swedish += 'år'+' '     #translates year
+      
+
+  return swedish  #returns the translated string
+
+
+
+#Question 1 - Old version
 
 ##Prof G - The assignment required the function to accept a list of strings
-def translate(text):
+def translate1(text):
 ##Prof G - Good header doc!
   """
   This function translates The words "merry" "christmas" "and" "happy" "new" "year" to Swedish.
@@ -48,6 +91,9 @@ def translate(text):
 
   return swedish  #returns the translated string
  
+
+
+
 
 #Question 2 
 def char_freq(string):
@@ -110,10 +156,37 @@ def rot13cipher(code):
     return answer
 
 
+#Question 4 - Correction
+## The corrected function changed the order of two statements so that it can deal with a period followed by mutiple spaces.
 
-#Question 4
 import re  #import regular expression 
 def correct(string):
+    """
+    This functions corrects two things of a string
+    1)two or more occurrences of the space character is compressed into one
+    2)inserts an extra space after a period if the period is directly followed by a letter.
+    For example, correct("This     is so  great.Nice.")should return "This is so great. Nice."
+    
+    The function uses the .sub method of the regular expression module most.
+    re.sub(pattern, replacement, string). This method replaces all occurrences of the RE pattern in string with replacement. It returns modified string.
+    
+    Parameters:
+    A string 
+  
+    Returns:
+    A corrected string
+    """  
+    
+    
+    string=re.sub('\.','. ',string) #replaces period ended with no space to period ended with one space
+    string=re.sub('\ +',' ',string) #replaces one or more spaces between two words to one space
+    return(string)
+    
+
+
+#Question 4 - Old version
+
+def correct1(string):
     """
     This functions corrects two things of a string
     1)two or more occurrences of the space character is compressed into one
@@ -135,9 +208,10 @@ def correct(string):
     return(string)
     
 
-#Question 5
+#Question 5 - Correction
+## The Corrected version adds a conversion to lower case letters so that the function will handle all cases.
 
-def make_3sg_form(word):
+def make_3sg_form(words):
     """
     This functions takes a verb and turns it into third person singular form.
     Usually adding s to the verb would be enough, but for the words ending in y, o, ch, s, sh, x or z , things are diiferent.
@@ -148,6 +222,7 @@ def make_3sg_form(word):
     Returns:
     A string of the third person singular form of the word
     """  
+    word = words.lower()  #Converts all the letters to lower case
     newword = ''   #Initiation of a new string
     
     ##Prof G - Nice work but needs to handle mixed case.
@@ -172,10 +247,10 @@ def make_3sg_form(word):
     
     return newword
   
+#Question 6 - Correction
+## The Corrected version adds a conversion to lower case letters so that the function will handle all cases.
 
-#Question 6  
-
-def make_ing_form(word):
+def make_ing_form(words):
     """
     This functions takes a verb and turns it into its present participle form.
     Usually adding ing to the verb would be enough, but for the words ending in e,ee, ie and shorter verbs , things are diiferent.
@@ -188,7 +263,10 @@ def make_ing_form(word):
     """  
     
     ##Prof G - Needs to handle mixed case.
+    
+    word = words.lower()   #Converts all the letters to lower case
     newword = '' #Initiation of a new string
+    
     consonant = 'bcdfghjklmnpqrstvxz'    #list all the consonant letters
     vowel ='aeiou'   #list all the vowel letters
     if len(word)>2:    #The rules only apply to words longer than 2 letters
@@ -410,13 +488,13 @@ def myreduce(function,list1):
 
 #Testing Section
 
-print('Question 1 test 1:\n', translate('happy christmas and happy new year'),'\n')
-print('Question 1 test 2:\n',translate('happy NEW year'),'\n')
+print('Question 1 test 1:\n', translate(['happy', 'christmas', 'and', 'happy', 'new', 'year']),'\n')
+print('Question 1 test 2:\n',translate(['happy', 'NEW', 'year']),'\n')
 
 print('Question 2 test 1:\n',char_freq('abbabcbdbabdbdbabababcbcbab'),'\n')
 print('Question 2 test 2:\n',char_freq('hiduhweuhhhuewyrutgggqoooooiuu'),'\n')
 
-print('Question 3 test 1:\n',encoderdecoder('Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'),'\n')
+print('Question 3 test 1:\n',rot13cipher('Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'),'\n')
 
 print('Question 4 test 1:\n',correct("This.    is very funny    and cool.Indeed!"),'\n')
 
@@ -446,4 +524,3 @@ print('Question 11 test 1:\n',translate2(['merry','christmas','and','happy','new
 print('Question 12 test 1:\n',mymap(lambda x: x**2,[1,2,3,4,5]),'\n')
 print('Question 12 test 2:\n',myfilter(lambda x:x>4,[1,2,3,4,5,6]) ,'\n')
 print('Question 12 test 3:\n', myreduce(max,[1,2,3,4,5,6]) ,'\n')
-
