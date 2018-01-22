@@ -1,13 +1,17 @@
 #common python functions
 
 test_str = "ewhfuwihfuuwirhfuirh"
-test_list = [1,2,3]
+test_list = [1,2,3,2]
 
 len(test_str)
 # for loop, don't len(string)-1, automatically -1
 
 null = None
 
+test_list.sort() 
+
+del test_list[1]
+#delete an element in a list
 
 for i in range(3):
     print (i,"\n")
