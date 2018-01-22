@@ -28,3 +28,11 @@ if (test_str=="yyyy") or (test_str=="fwfr"):
 #Add an element to a list
 test_list.append("3333")
 print(test_list)
+
+
+#elif
+#false
+abs(-11111) == 11111
+
+# % module
+# // divide integer
