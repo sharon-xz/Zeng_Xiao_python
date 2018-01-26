@@ -36,3 +36,11 @@ abs(-11111) == 11111
 
 # % module
 # // divide integer
+
+
+#import sys
+#print(sys.maxint)
+
+print(str(22333))
+
+max(2,3)==2
